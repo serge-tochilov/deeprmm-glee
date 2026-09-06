@@ -1,0 +1,16 @@
+ M nommd-arena/opponent-sequence-lab/src/glee_sequence_lab/cli.py
+ M nommd-arena/opponent-sequence-lab/src/glee_sequence_lab/persuasion_buyer_continuation.py
+ M nommd-arena/opponent-sequence-lab/tests/test_persuasion_buyer_continuation.py
+ M nommd-arena/opponent-sequence-lab/tests/test_self_mirror.py
+ M nommd-arena/opponent-sequence-lab/tools/run_public_self_mirror_v1.sh
+?? nommd-arena/opponent-sequence-lab/src/glee_sequence_lab/self_mirror_cpu_reference.py
+?? nommd-arena/opponent-sequence-lab/src/glee_sequence_lab/self_mirror_live.py
+?? nommd-arena/opponent-sequence-lab/src/glee_sequence_lab/self_mirror_release.py
+?? nommd-arena/opponent-sequence-lab/tools/build_conditional_cpu_runtime.py
+?? nommd-arena/opponent-sequence-lab/tools/build_self_mirror_cpu_runtime.py
+?? nommd-arena/opponent-sequence-lab/tools/run_final_deeprmm_rebuild.sh
+?? nommd-arena/opponent-sequence-lab/tools/smoke_self_mirror_socket.py
+?? nommd-arena/opponent-sequence-lab/tools/validate_self_mirror_cpu_equivalence.py
+?? nommd-arena/opponent-sequence-models/self-mirror-releases/
+?? nommd-arena/opponent-sequence-models/self-mirror-runtime-releases/
+?? nommd-arena/policies/self-mirror/

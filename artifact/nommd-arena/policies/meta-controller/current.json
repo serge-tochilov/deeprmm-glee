@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "contract": "glee-terra-meta-controller-live-policy-pointer-v1",
+  "activation_id": "terra-1.5-round-v1.4-final-deeprmm-rebuild-20260820",
+  "path": "releases/v1.4-final-deeprmm-rebuild.json",
+  "sha256": "bb3f851bfb10f668df981a2406e51e0104a25a52eb29e111cace7f9c50f0ceb8"
+}

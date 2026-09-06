@@ -1,0 +1,28 @@
+{
+  "conditional_twin": {
+    "forecast_exposed_to_selector": true
+  },
+  "contract": "glee-v108-public-launch-receipt-v1",
+  "effort": "high",
+  "families": [
+    "bargaining",
+    "negotiation",
+    "persuasion"
+  ],
+  "global_tactic_ledger": {
+    "public_derivative_file_sha256": "78cc2481c7ef26ef6a934a219368211beab2c787156f3e06206906ef2e2e7b8f",
+    "public_derivative_sha256": "54bfbd5411ccde2f6d6117273eef43048a05ecae2eeff3e0851a6cb3e11e6ee9",
+    "source_sha256": "90ce90befd3261536c752e00c4b3bcaf3b7130cb96a91e5aad5b309f6b254c32",
+    "transformation": "The public derivative removes 24 private game identifiers from 4 provenance arrays and replaces each array with its aggregate game count; tactic conditions and guidance are unchanged."
+  },
+  "max_parallel": 20,
+  "meta_controller": {
+    "public_self_mirror": {
+      "planner_visibility": false
+    }
+  },
+  "model": "gpt-5.6-terra",
+  "source_private_manifest_sha256": "a404cbac6939fb0eecfd2fb41416ea605615e1dcea0a6605cbea8ced323f6fea",
+  "status": "public-safe-derivative-of-private-hash-bound-launch-receipt",
+  "worker_policy": "meta15"
+}

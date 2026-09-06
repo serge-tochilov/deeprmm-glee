@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "contract": "glee-message-style-policy-v1",
+  "revision": "v2-joint-hi-persona",
+  "created_at": "2026-08-13T00:00:00-04:00",
+  "evidence": {
+    "analysis": "reports/glee-message-style-correlation-v1-20260813/analysis.json",
+    "timing_analysis": "reports/glee-timing-distribution-v1-20260813/summary.json",
+    "selection_rule": "choose a population lexical profile associated with the opposite opening economic style, bind it to a compatible cluster-level timing profile, and pin both for the game",
+    "identity_free_policy_signal": "lexical-only features improved untouched-suffix forecasts of later proposals and responses in Bargaining and Negotiation; this supports anti-aligned realization and a soft inbound prior, not action authority",
+    "timing_boundary": "the profile samples a stable game-speed quantile and only move-kind residual jitter; it does not imitate a named opponent or expose internal branch provenance",
+    "persuasion_limit": "signal-level association only because just 3 stable Persuasion identities meet the support threshold"
+  },
+  "economic_style_thresholds": {
+    "bargaining_soft_max": 0.42,
+    "bargaining_hard_min": 0.58,
+    "negotiation_complete_soft_max": 0.4,
+    "negotiation_complete_hard_min": 0.6,
+    "negotiation_incomplete_soft_max": 0.02,
+    "negotiation_incomplete_hard_min": 0.1
+  },
+  "profiles": {
+    "native-strategic": {
+      "renderer": "native",
+      "prompt_contract": "Use the established DeepRMM style: one or 2 concise complete sentences with a concrete strategic reason when useful. Preserve the selected action and do not mention this profile. A message remains optional unless the action schema requires one."
+    },
+    "conversational-comma": {
+      "renderer": "conversational-comma",
+      "prompt_contract": "Use a compact conversational sentence with a comma and one natural contraction. Avoid technical game terminology, policy names, equilibrium language, and lengthy explanation. Preserve the selected action and communicative act. Do not mention this profile."
+    },
+    "formal-expansive": {
+      "renderer": "formal-expansive",
+      "prompt_contract": "Use 2 formal complete sentences totaling roughly 24 to 40 words. Use no contractions, questions, slang, policy names, or equilibrium terminology. State a position and a general reason without changing the selected action or recommendation. Do not mention this profile."
+    },
+    "formal-numeric": {
+      "renderer": "formal-numeric",
+      "prompt_contract": "Lead with the exact proposed amount in one formal sentence, then add one short impersonal sentence. Use no contractions, questions, slang, policy names, or equilibrium terminology. Preserve the selected action and do not mention this profile."
+    },
+    "terse-lower": {
+      "renderer": "terse-lower",
+      "prompt_contract": "Use a lowercase fragment of 2 to 6 words with no terminal punctuation, explanation, technical vocabulary, or identity claim. Preserve the selected action and recommendation polarity. Do not mention this profile."
+    }
+  },
+  "routing": {
+    "known": {
+      "bargaining": "native-strategic",
+      "negotiation": "native-strategic",
+      "persuasion": "native-strategic"
+    },
+    "hidden": {
+      "bargaining": {
+        "soft": "formal-expansive",
+        "middle": "terse-lower",
+        "hard": "conversational-comma",
+        "unknown": "terse-lower"
+      },
+      "negotiation": {
+        "soft": "terse-lower",
+        "middle": "conversational-comma",
+        "hard": "formal-numeric",
+        "unknown": "terse-lower"
+      },
+      "persuasion": {
+        "positive": "formal-expansive",
+        "negative": "terse-lower",
+        "unknown": "conversational-comma"
+      }
+    }
+  },
+  "timing_persona_policy": {
+    "contract": "glee-hi-timing-persona-v1",
+    "activation": "authoritative",
+    "game_quantile_beta": {
+      "alpha": 2.0,
+      "beta": 2.0
+    },
+    "residual_quantile_half_width": 0.12,
+    "lexical_profile_routes": {
+      "conversational-comma": "hi-conversational-mixed",
+      "formal-expansive": "hi-formal-slow",
+      "formal-numeric": "hi-numeric-mixed",
+      "terse-lower": "hi-terse-mixed"
+    },
+    "profiles": {
+      "hi-conversational-mixed": {
+        "quantile_seconds": [
+          {"q": 0.0, "seconds": 16.0},
+          {"q": 0.1, "seconds": 20.0},
+          {"q": 0.5, "seconds": 28.0},
+          {"q": 0.9, "seconds": 38.0},
+          {"q": 1.0, "seconds": 46.0}
+        ],
+        "move_multipliers": {
+          "bargaining": {"proposal": 1.0, "decision": 0.95},
+          "negotiation": {"proposal": 0.95, "decision": 1.0},
+          "persuasion": {"seller-signal": 0.95, "buyer-decision": 1.0}
+        }
+      },
+      "hi-formal-slow": {
+        "quantile_seconds": [
+          {"q": 0.0, "seconds": 20.0},
+          {"q": 0.1, "seconds": 25.0},
+          {"q": 0.5, "seconds": 34.0},
+          {"q": 0.9, "seconds": 42.0},
+          {"q": 1.0, "seconds": 46.0}
+        ],
+        "move_multipliers": {
+          "bargaining": {"proposal": 1.0, "decision": 0.95},
+          "negotiation": {"proposal": 1.0, "decision": 0.95},
+          "persuasion": {"seller-signal": 1.0, "buyer-decision": 0.95}
+        }
+      },
+      "hi-numeric-mixed": {
+        "quantile_seconds": [
+          {"q": 0.0, "seconds": 15.0},
+          {"q": 0.1, "seconds": 20.0},
+          {"q": 0.5, "seconds": 27.0},
+          {"q": 0.9, "seconds": 37.0},
+          {"q": 1.0, "seconds": 45.0}
+        ],
+        "move_multipliers": {
+          "bargaining": {"proposal": 0.95, "decision": 0.9},
+          "negotiation": {"proposal": 1.0, "decision": 0.95},
+          "persuasion": {"seller-signal": 0.95, "buyer-decision": 0.9}
+        }
+      },
+      "hi-terse-mixed": {
+        "quantile_seconds": [
+          {"q": 0.0, "seconds": 14.0},
+          {"q": 0.1, "seconds": 17.0},
+          {"q": 0.5, "seconds": 23.0},
+          {"q": 0.9, "seconds": 31.0},
+          {"q": 1.0, "seconds": 40.0}
+        ],
+        "move_multipliers": {
+          "bargaining": {"proposal": 1.0, "decision": 0.95},
+          "negotiation": {"proposal": 0.95, "decision": 0.9},
+          "persuasion": {"seller-signal": 0.95, "buyer-decision": 0.9}
+        }
+      }
+    }
+  }
+}

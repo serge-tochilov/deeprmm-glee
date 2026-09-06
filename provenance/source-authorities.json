@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "artifact": "deeprmm-glee-2026",
+  "created_at": "2026-08-30",
+  "public_derivative": {
+    "created_at": "2026-08-31",
+    "reproduction_data_added_on": "2026-09-02",
+    "scope": "Codex-only released execution path and deidentified metric-level sufficient data",
+    "historical_source_retained_privately": true
+  },
+  "authorities": {
+    "final_runtime": {
+      "run_id": "glee-v108-deeprmm-terra-terminal-race-compiled-bargaining-meta15-balanced-self-mirror-shared-w20-g48-1800-20260827T140153Z",
+      "source_git": "81bc0c53964d7ed3bc89f180c0acb0aca71d0a4c",
+      "run_manifest_sha256": "a404cbac6939fb0eecfd2fb41416ea605615e1dcea0a6605cbea8ced323f6fea",
+      "snapshot_inventory_sha256": "a1e4cbda77a304e72d3e5bc8b45f9480fc6925df2b337ff5b4dfdd927c3df761",
+      "glee_parallel_sha256": "c9ab27cddc067af5767b1f1379920cd67f8f15ab39cd64d98a475d3215df0f18"
+    },
+    "conditional_twin": {
+      "run_id": "glee-v21-conditional-twin-final-deeprmm-9587-cpu-20260821T003042Z",
+      "source_git": "fa5d2ab534c7cc070644ebe9da29e626b7005fa2",
+      "snapshot_inventory_sha256": "83cfea76b5a3ed6c666f8eeffd3b92e270006ee711cb3dc01f2694024d58ffcc",
+      "live_conditional_sha256": "df2a9a8df7c119f06d3b101c84e3b17cd4c1b42d9eb973f1b57e2ace7fa3583b",
+      "uv_lock_sha256": "d5ea06b9c4d36735fb16c57561aa23a36575c6ff7c66732f631245d5b61b8699"
+    },
+    "public_self_mirror": {
+      "run_id": "glee-v21-public-self-mirror-final-deeprmm-9587-cpu-20260821T003057Z",
+      "source_git": "fa5d2ab534c7cc070644ebe9da29e626b7005fa2",
+      "snapshot_inventory_sha256": "c87a28e27f2d8f907e703e9d2b40f751b8c15ad1f18753a8fa6627aa7acfebb7",
+      "self_mirror_cpu_reference_sha256": "05132f30c8fdabc5e93e5e10eb39f10c6879f8e68dfacb7bfec5a0e182c74192",
+      "uv_lock_sha256": "d5ea06b9c4d36735fb16c57561aa23a36575c6ff7c66732f631245d5b61b8699"
+    },
+    "paper_evidence": {
+      "receipt": "paper/evidence.json",
+      "sha256": "ea5a36365fe2774362f9201c14eb0663dcc0f846dc0d1b809f23314c8890361d"
+    },
+    "all_history_execution_evidence": {
+      "private_receipt_sha256": "36aa5963d411f624c620ac21160636188bd05e2f0c22246bab6f60a9d0a5a413",
+      "public_derivative": "receipts/analysis/all-history-execution-summary.json",
+      "public_derivative_sha256": "1783a590309b3d1404a611c8a1a58a179f4118052a4e5b2ed24724f6dcbcad5f"
+    },
+    "metric_level_reproduction_evidence": {
+      "input_tables": 8,
+      "public_receipt": "receipts/analysis/reproduced-paper-metrics.json",
+      "public_receipt_sha256": "b16b9938fba3f49dbcc94d8147bd8895ec833bf00daea698c5e6a1e7630a4683",
+      "reproduction_script": "tools/reproduce_paper_metrics.py",
+      "reproduction_script_sha256": "93acebd250fb1f85b34c95fff03d0ef8a505864046dfcd78f747957f24ab77d5"
+    }
+  },
+  "transformations": [
+    "Exported the recursive local-import closure of nommd_arena.glee_parallel plus the exact 4-module training closure imported by the promoted sequence lab.",
+    "Replaced post-launch sequence-lab tests with the tests from the lab source commit fa5d2ab534c7cc070644ebe9da29e626b7005fa2.",
+    "Removed the historical nommd-arena console-script declaration because cli.py is outside the live closure.",
+    "Extracted the selected Codex transport into nommd_arena.codex_transport and removed unselected transport backends and the historical shared package boundary.",
+    "Renamed the final deployed prompt components to canonical public filenames and removed the historical prompt-variant selector without changing the composed instructions.",
+    "Regenerated the public runtime and sequence-lab dependency locks after removing the historical transport package.",
+    "Omitted private snapshot inventories whose path listings exposed unrelated project structure; their SHA-256 identities remain recorded here and the exact inventories remain in the private archive.",
+    "Rewrote only the standalone paper evidence-ledger paths; source artifact bytes and cited private-source hashes are unchanged.",
+    "Derived a public-safe campaign-wide execution summary from the private all-history receipt and retained its source SHA-256 without journal-level paths, identifiers, or prefix inventories.",
+    "Projected held-out targets, frozen predictions, table-local anonymous group labels, rating outcomes, dossier call costs, and execution measurements into 8 compact Parquet tables sufficient for the reported estimators.",
+    "Regenerated the reversed-Persuasion held-out outputs once from hash-bound weights and corpus because no original row-level prediction file was retained; the resulting difference is below the manuscript's reported precision.",
+    "Excluded credentials, browser state, raw model corpora, learned weights, stable identifiers, messages, exact timestamps, full event journals, full cloud-call journals, superseded releases, and mutable databases including the unhash-bound opponent-timing store."
+  ]
+}

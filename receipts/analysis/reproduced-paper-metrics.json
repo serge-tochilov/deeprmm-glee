@@ -1,0 +1,264 @@
+{
+  "boundary": "All inputs are deidentified metric-level sufficient data. The reproduction neither retrains models nor replays the nonstationary live competition.",
+  "contract": "deeprmm-glee-deidentified-paper-metric-reproduction-v1",
+  "metrics": {
+    "conditional_twin": {
+      "arms": {
+        "convex_stack": {
+          "accuracy": 0.886953551913,
+          "by_family": {
+            "bargaining": {
+              "accuracy": 0.795321637427,
+              "negative_log_likelihood": 0.430190849196,
+              "rows": 855
+            },
+            "negotiation": {
+              "accuracy": 0.887640449438,
+              "negative_log_likelihood": 0.357035029179,
+              "rows": 178
+            },
+            "persuasion": {
+              "accuracy": 0.928232189974,
+              "negative_log_likelihood": 0.190670217438,
+              "rows": 1895
+            }
+          },
+          "equal_family_negative_log_likelihood": 0.325965365271,
+          "negative_log_likelihood": 0.270725913013,
+          "rows": 2928
+        },
+        "engineered_ensemble": {
+          "accuracy": 0.786543715847,
+          "by_family": {
+            "bargaining": {
+              "accuracy": 0.74269005848,
+              "negative_log_likelihood": 0.550154948386,
+              "rows": 855
+            },
+            "negotiation": {
+              "accuracy": 0.887640449438,
+              "negative_log_likelihood": 0.376186037418,
+              "rows": 178
+            },
+            "persuasion": {
+              "accuracy": 0.796833773087,
+              "negative_log_likelihood": 0.430158087474,
+              "rows": 1895
+            }
+          },
+          "equal_family_negative_log_likelihood": 0.452166357759,
+          "negative_log_likelihood": 0.461917066698,
+          "rows": 2928
+        },
+        "sequence_ensemble": {
+          "accuracy": 0.89924863388,
+          "by_family": {
+            "bargaining": {
+              "accuracy": 0.831578947368,
+              "negative_log_likelihood": 0.45430781911,
+              "rows": 855
+            },
+            "negotiation": {
+              "accuracy": 0.915730337079,
+              "negative_log_likelihood": 0.343077360078,
+              "rows": 178
+            },
+            "persuasion": {
+              "accuracy": 0.928232189974,
+              "negative_log_likelihood": 0.190244612731,
+              "rows": 1895
+            }
+          },
+          "equal_family_negative_log_likelihood": 0.32920993064,
+          "negative_log_likelihood": 0.276644295273,
+          "rows": 2928
+        }
+      },
+      "games": 628,
+      "rows": 2928,
+      "selection_objective": "validation equal-family negative log likelihood"
+    },
+    "dossier_comparison": {
+      "decisions": 146,
+      "direct_context": {
+        "mean_elapsed_seconds": 154.209346468531,
+        "mean_input_tokens": 7287.531468531469,
+        "mean_reasoning_tokens": 8043.902097902098,
+        "successful_calls": 143
+      },
+      "dossier_minus_direct": {
+        "mean_elapsed_seconds": 26.710268524427,
+        "mean_input_tokens": -1090.679355855413,
+        "mean_reasoning_tokens": 1449.111986604944
+      },
+      "failed_calls": 7,
+      "opponent_clusters": 9,
+      "prose_dossier": {
+        "mean_elapsed_seconds": 180.919614992958,
+        "mean_input_tokens": 6196.852112676056,
+        "mean_reasoning_tokens": 9493.014084507042,
+        "successful_calls": 142
+      },
+      "requested_calls": 292,
+      "successful_calls": 285,
+      "uncertainty": {
+        "direct_context_minus_prose_dossier": {
+          "proposal_mae_delta": {
+            "finite_replicates": 5000,
+            "interval_crosses_zero": true,
+            "lower_95": -0.01889388013,
+            "point": -0.004504902995,
+            "upper_95": 0.003972586587
+          },
+          "proposal_nll_delta": {
+            "finite_replicates": 5000,
+            "interval_crosses_zero": true,
+            "lower_95": -0.316796176299,
+            "point": 0.11340480517,
+            "upper_95": 1.113719920877
+          },
+          "proposal_rmse_delta": {
+            "finite_replicates": 5000,
+            "interval_crosses_zero": true,
+            "lower_95": -0.041244969374,
+            "point": -0.011467724935,
+            "upper_95": 0.007326387927
+          },
+          "response_brier_delta": {
+            "finite_replicates": 5000,
+            "interval_crosses_zero": true,
+            "lower_95": -0.085524442777,
+            "point": -0.032766314172,
+            "upper_95": 0.013703121341
+          },
+          "response_nll_delta": {
+            "finite_replicates": 5000,
+            "interval_crosses_zero": true,
+            "lower_95": -0.191474731475,
+            "point": -0.063748855232,
+            "upper_95": 0.063768195237
+          }
+        },
+        "method": "paired 2-stage opponent-and-complete-game cluster bootstrap",
+        "opponent_clusters": 9,
+        "replicates": 5000,
+        "seed": 20260810
+      }
+    },
+    "execution": {
+      "all_history": {
+        "decision_latency_seconds": {
+          "maximum": 108.515156,
+          "mean": 17.699399803507,
+          "median": 11.009114,
+          "p95": 77.966995
+        },
+        "decision_routes": {
+          "cloud-assisted": 73466,
+          "local": 24115
+        },
+        "distinct_terminal_games": 13125,
+        "fallback_count": 1074,
+        "fallback_fraction": 0.011006240969,
+        "invalid_move_submissions": 0,
+        "move_submissions": 97473,
+        "worker_decisions": 97581
+      },
+      "final_v108_prefix": {
+        "decision_latency_seconds": {
+          "maximum": 60.055639,
+          "mean": 7.690354786635,
+          "median": 0.042729,
+          "p95": 26.04692
+        },
+        "decision_routes": {
+          "cloud-assisted": 1686,
+          "local": 2115
+        },
+        "distinct_terminal_games": 447,
+        "fallback_count": 15,
+        "fallback_fraction": 0.003946329913,
+        "invalid_move_submissions": 0,
+        "move_submissions": 3781,
+        "worker_decisions": 3801
+      }
+    },
+    "persuasion_buyer_continuation": {
+      "paired_game_bootstrap": {
+        "bootstrap_95_percent_interval": [
+          -0.140925926453,
+          -0.033548329932
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 72014,
+        "games": 159,
+        "selected_minus_markov_game_macro_negative_log_likelihood": -0.08801602003
+      },
+      "preceding_signal_and_action_markov_baseline": {
+        "accuracy": 0.701092353525,
+        "balanced_accuracy": 0.630632063647,
+        "game_macro_negative_log_likelihood": 0.702332683436,
+        "games": 159,
+        "negative_log_likelihood": 0.702332683436,
+        "rows": 3021
+      },
+      "selected": {
+        "accuracy": 0.695465077789,
+        "balanced_accuracy": 0.502826985536,
+        "game_macro_negative_log_likelihood": 0.614316663406,
+        "games": 159,
+        "negative_log_likelihood": 0.614316663406,
+        "rows": 3021
+      }
+    },
+    "public_self_mirror": {
+      "action_scored_games": 1181,
+      "baseline_status": "no simple baseline was frozen; metrics are descriptive",
+      "seeds": {
+        "1729": {
+          "action_accuracy": 0.843178920527,
+          "action_rows": 9412,
+          "proposal_coordinate_mean_absolute_error": 0.054243027439,
+          "proposal_rows": 3002
+        },
+        "2718": {
+          "action_accuracy": 0.840310242244,
+          "action_rows": 9412,
+          "proposal_coordinate_mean_absolute_error": 0.052267912246,
+          "proposal_rows": 3002
+        }
+      },
+      "targets": 12414
+    },
+    "rating_model": {
+      "families": {
+        "bargaining": {
+          "held_out_mean_absolute_error": 1.870241808958,
+          "held_out_rows": 679,
+          "zero_baseline_held_out_mean_absolute_error": 3.574079528719
+        },
+        "negotiation": {
+          "held_out_mean_absolute_error": 2.144766356198,
+          "held_out_rows": 442,
+          "zero_baseline_held_out_mean_absolute_error": 3.183484162896
+        },
+        "persuasion": {
+          "held_out_mean_absolute_error": 2.091097413216,
+          "held_out_rows": 317,
+          "zero_baseline_held_out_mean_absolute_error": 3.032176656151
+        }
+      }
+    }
+  },
+  "schema_version": 1,
+  "source_files": {
+    "conditional-twin-test.parquet": "bd3f52162ddae0d69790aa4525d15d06f7c3d5c4c17e404b2054f145fe5100db",
+    "dossier-comparison.parquet": "5c5d19eb33d4fc82a110fac2ab7a6a96aa5bb34d78afadc037f8ddc4a243b37f",
+    "execution-decisions.parquet": "8a05ad9d8fe5e6840e001aa94a935d89e25715297a7b1ff7edb706e64423b61f",
+    "execution-submissions.parquet": "8e4fec1b88a0a4ad891c164b78849ebf721f02728209982c4a32a130afa22512",
+    "execution-terminal-games.parquet": "438deda743990ea43c19b0965b098705e16e93ddb7994b021dd5933524dbb941",
+    "persuasion-continuation-test.parquet": "e562d95593c3c2b07d54bc8399a1a26a4a1420f6f4a152a2b02ba8cf7d350e0e",
+    "rating-model-heldout.parquet": "ebe6a444dc1cc3fb8811d61b9abf936924979f2bb691c762a319e4700490269b",
+    "self-mirror-test.parquet": "c7d190609833c54e153cebaa9c6cc6316e25697b89ef15f33a1fa66f822c4161"
+  }
+}

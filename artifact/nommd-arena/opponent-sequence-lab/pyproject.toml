@@ -1,0 +1,46 @@
+[project]
+name = "glee-sequence-twin-lab"
+version = "0.1.0"
+description = "Offline hierarchical causal-sequence opponent-model experiments for GLEE"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "nommd-arena",
+    "numpy>=2.1",
+    "polars>=1.0",
+    "torch==2.10.0",
+]
+
+[project.optional-dependencies]
+mamba = [
+    "causal-conv1d==1.6.2.post1",
+    "mamba-ssm",
+]
+
+[project.scripts]
+glee-sequence-lab = "glee_sequence_lab.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+]
+
+[tool.uv.sources]
+causal-conv1d = { url = "https://github.com/Dao-AILab/causal-conv1d/releases/download/v1.6.2.post1/causal_conv1d-1.6.2.post1%2Bcu13torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl" }
+nommd-arena = { path = "..", editable = true }
+mamba-ssm = { git = "https://github.com/state-spaces/mamba.git", rev = "e9594ce1c732d97440f0332fdc43170a2294dbfa" }
+torch = { index = "pytorch-cu130" }
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/glee_sequence_lab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,95 @@
+{
+  "boundary": "Private-source aggregate receipt. Raw training corpora, participant identifiers, inferred account linkages, identity-bearing vocabularies, and trained weights remain private. Separate deidentified target and frozen-prediction tables reproduce the reported evaluation metrics without exposing those sources.",
+  "conditional_twin": {
+    "direct_response_games": 4175,
+    "direct_response_targets": 17157,
+    "held_out_accuracy": 0.88695,
+    "held_out_comparison": {
+      "engineered_only_accuracy": 0.7865437158469946,
+      "engineered_only_equal_family_negative_log_likelihood": 0.45216635775909514,
+      "games": 628,
+      "responses": 2928,
+      "selected_convex_stack_accuracy": 0.8869535519125683,
+      "selected_convex_stack_equal_family_negative_log_likelihood": 0.3259653652706446,
+      "selection_objective": "validation equal-family negative log likelihood",
+      "sequence_only_accuracy": 0.8992486338797814,
+      "sequence_only_equal_family_negative_log_likelihood": 0.3292099306396218
+    },
+    "sequence_parameters_per_seed": 344059,
+    "source_manifest_sha256": "a0367b65eceff670d8d0b5fb851298c18b68bddb5b9f00ea30158e7430700674",
+    "source_result_sha256": "a2e6d83adef90d5a2479b0080fb9df48c65e4079f0dc6864f88906ac01b3b467",
+    "source_sequence_manifest_sha256": "f7b52d2af4c2b2760979f6c4f84203b4aa912a280f7ee15571de9b91ba079bce"
+  },
+  "contract": "deeprmm-glee-public-aggregate-model-evidence-v1",
+  "created_on": "2026-08-31",
+  "frozen_logical_game_count": 9587,
+  "meta_controller_source_sha256": "bb3f851bfb10f668df981a2406e51e0104a25a52eb29e111cace7f9c50f0ceb8",
+  "opponent_statistical_packages": {
+    "families": 3,
+    "packages": 924,
+    "public_opponents": 308,
+    "source_summary_sha256": "e875ef9e45027136c75bd09e8acce70d58183f8b9d92aca05e6a99a30f828817"
+  },
+  "persuasion_buyer_continuation": {
+    "preceding_signal_and_action_markov_baseline": {
+      "balanced_accuracy": 0.630632,
+      "game_macro_negative_log_likelihood": 0.702333,
+      "test_accuracy": 0.701092
+    },
+    "selected_balanced_accuracy": 0.502827,
+    "selected_minus_baseline_game_macro_negative_log_likelihood": -0.088015,
+    "selected_minus_baseline_paired_95_percent_interval": [
+      -0.140926,
+      -0.033548
+    ],
+    "source_manifest_sha256": "46345845cfd13c19cbca8f1590d02d508f8fc592dbe33f3376edf6afa71af125",
+    "test_accuracy": 0.6954650777888116,
+    "test_game_macro_negative_log_likelihood": 0.6143172467695995,
+    "test_games": 159,
+    "test_transitions": 3021
+  },
+  "rating_model": {
+    "families": {
+      "bargaining": {
+        "configurations": 480,
+        "held_out_mae": 1.8702418089578772,
+        "training_rows": 4521,
+        "zero_baseline_held_out_mae": 3.574079528718704
+      },
+      "negotiation": {
+        "configurations": 356,
+        "held_out_mae": 2.144766356198233,
+        "training_rows": 2943,
+        "zero_baseline_held_out_mae": 3.1834841628959274
+      },
+      "persuasion": {
+        "configurations": 286,
+        "held_out_mae": 2.0910974132164335,
+        "training_rows": 2108,
+        "zero_baseline_held_out_mae": 3.0321766561514196
+      }
+    },
+    "source_summary_sha256": "94dbed30f98aa9b131ff0fdc766aa95c065b978306f029def05ddcd95761fbbb"
+  },
+  "schema_version": 1,
+  "self_mirror": {
+    "baseline_status": "no simple baseline was frozen; metrics are descriptive",
+    "parameters_per_seed": 270275,
+    "seeds": [
+      {
+        "action_accuracy": 0.8431789205269868,
+        "proposal_coordinate_mean_absolute_error": 0.0542430273498558,
+        "seed": 1729
+      },
+      {
+        "action_accuracy": 0.8403102422439439,
+        "proposal_coordinate_mean_absolute_error": 0.052267911333310296,
+        "seed": 2718
+      }
+    ],
+    "source_manifest_sha256": "f6fcd1e715784fd230526629ac9bb237193fe66bcec3b54943264a7ae0f055f8",
+    "test_games": 1181,
+    "test_targets": 12414
+  },
+  "status": "public-aggregate-derivative-of-private-hash-bound-receipts"
+}

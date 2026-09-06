@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "contract": "glee-bargaining-live-policy-pointer-v1",
+  "release": "releases/v2.22-bounded-v3-low-share.json",
+  "release_sha256": "011c1504f1a79ba85fa1755c09b1497e99b64d1fe7efdf2ffd00940126621df6"
+}

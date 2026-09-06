@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "contract": "glee-persuasion-live-policy-v1",
+  "revision": "v2.8-bounded-no-response-routing",
+  "created_at": "2026-08-26T19:00:00-04:00",
+  "parameters": {
+    "authority_min_population_purchased_rows": 20,
+    "buyer_buy_margin_ratio": 0.05,
+    "buyer_pass_margin_ratio": 0.05,
+    "buyer_min_current_revealed_purchases": 4,
+    "seller_deception_advantage_margin": 0.05,
+    "seller_no_response_min_passes": 4,
+    "seller_no_response_max_smoothed_buy_rate": 0.2
+  },
+  "features": {
+    "buyer_channel_scope": "binary-only",
+    "buyer_evidence_boundary": "credible-interval",
+    "buyer_pass_scope": "final-round-only",
+    "seller_no_response_routing": "deterministic-quality-consistent"
+  }
+}

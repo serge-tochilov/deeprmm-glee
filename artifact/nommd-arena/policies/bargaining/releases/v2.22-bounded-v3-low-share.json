@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "contract": "glee-bargaining-live-policy-v1",
+  "revision": "bargaining-v2.22-bounded-v3-low-share",
+  "created_at": "2026-08-25T20:52:49-04:00",
+  "parent_revision": "bargaining-v2.20-strong-continuation-margin",
+  "promotion_basis": "The 23-game v102 Bargaining window contained 3 nonterminal 35% acceptances with displayed rating losses and v3 80% intervals wholly below zero. Behavioral rejection was non-dominated in each case. A distinct 42% complete-information acceptance remains untouched because its analytic continuation was worse and the v3 interval crossed zero. Legacy v1 rating-loss evidence remains shadow-only.",
+  "parameters": {
+    "minimum_package_support": 2.0,
+    "maximum_package_blend_weight": 0.35,
+    "minimum_package_value_improvement": 0.02,
+    "minimum_nonterminal_own_share": 0.25,
+    "extreme_opponent_share": 0.05,
+    "continuation_tolerance": 0.05,
+    "rating_point_catastrophe": -5.0
+  },
+  "features": {
+    "selected_curve_comparator": "linear-interpolation",
+    "patient_acceptance_guard": "bidirectional-continuation-coherence",
+    "response_rating_loss_guard": "shadow-only",
+    "rating_v3_low_share_guard": "bounded-authoritative"
+  }
+}

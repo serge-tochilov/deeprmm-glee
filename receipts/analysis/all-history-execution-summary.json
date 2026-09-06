@@ -1,0 +1,61 @@
+{
+  "boundary": "Public aggregate derivative only. The private source receipt contains journal-level prefix identities, paths, and crosschecks that are not distributed here.",
+  "contract": "deeprmm-glee-public-all-history-execution-summary-v1",
+  "created_on": "2026-09-02",
+  "execution_summary": {
+    "decision_latency_seconds": {
+      "maximum": 108.515156,
+      "mean": 17.6994,
+      "median": 11.009114,
+      "p95": 77.966995
+    },
+    "decision_routes": {
+      "cloud-assisted": 73466,
+      "local": 24115
+    },
+    "distinct_terminal_games": 13125,
+    "fallback_count": 1074,
+    "fallback_fraction": 0.011006,
+    "invalid_move_submissions": 0,
+    "move_submissions": 97473,
+    "submission_validity_missing": 0,
+    "worker_decisions": 97581
+  },
+  "final_v108_prefix_comparison": {
+    "decision_latency_seconds": {
+      "maximum": 60.055639,
+      "mean": 7.690355,
+      "median": 0.042729,
+      "p95": 26.04692
+    },
+    "decision_routes": {
+      "cloud-assisted": 1686,
+      "local": 2115
+    },
+    "distinct_terminal_games": 447,
+    "fallback_count": 15,
+    "invalid_move_submissions": 0,
+    "move_submissions": 3781,
+    "status": "matched",
+    "worker_decisions": 3801
+  },
+  "interpretation": "Decision aggregates cover every selected live-journal event through the clean retirement cutoff. The displayed game count is a scoreboard observation and is not the cardinality of the journal terminal-ID set.",
+  "private_reconstruction_script_sha256": "1ddab4f9502690fafc7e23a07e5711c078d61add7bff373ed6b2ccd8b7194ef0",
+  "private_source_receipt_sha256": "36aa5963d411f624c620ac21160636188bd05e2f0c22246bab6f60a9d0a5a413",
+  "retirement_frontier": {
+    "cutoff": "2026-08-28T03:51:02.158455+00:00",
+    "displayed_games": 13031,
+    "displayed_ratings": {
+      "bargaining": 1964.77,
+      "negotiation": 1830.96,
+      "persuasion": 1939.14
+    },
+    "version_epochs_submitted": 108
+  },
+  "schema_version": 1,
+  "source_selection": {
+    "maximum_observed_version_label": 108,
+    "selected_journals": 110
+  },
+  "status": "public-aggregate-derivative-of-private-hash-bound-receipt"
+}

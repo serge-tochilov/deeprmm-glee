@@ -1,0 +1,81 @@
+{
+  "contract": "glee-ki-hi-moving-block-bootstrap-v1",
+  "estimand": "mean authenticated rating delta in HI games minus mean authenticated rating delta in KI games, by family, excluding timeout outcomes",
+  "inference": {
+    "bootstrap": "circular moving-block bootstrap over each family chronological eligible-game stream",
+    "multiplicity": "Bonferroni 98.333% per-family intervals and Holm-adjusted null-centered bootstrap p-values control the 3-family family-wise error rate at 0.05",
+    "primary_block_length_eligible_games": 20,
+    "primary_repetitions": 50000,
+    "seed": 1729,
+    "sensitivity_block_lengths_eligible_games": [10, 40],
+    "sensitivity_repetitions": 20000
+  },
+  "primary": {
+    "bargaining": {
+      "difference_hi_minus_ki": -0.18999999999999995,
+      "familywise_95_percent_bonferroni_interval": [-1.411938309205302, 1.0608321221445662],
+      "hi_count": 120,
+      "hi_mean": 0.545,
+      "holm_adjusted_p": 1.0,
+      "ki_count": 140,
+      "ki_mean": 0.735,
+      "null_centered_two_sided_p": 0.7145457090858183,
+      "unadjusted_95_percent_interval": [-1.1953849979278908, 0.8272204900330851]
+    },
+    "negotiation": {
+      "difference_hi_minus_ki": 0.49115311643594967,
+      "familywise_95_percent_bonferroni_interval": [-1.0313925014223901, 1.9162247456208656],
+      "hi_count": 133,
+      "hi_mean": 0.8556390977443609,
+      "holm_adjusted_p": 1.0,
+      "ki_count": 107,
+      "ki_mean": 0.3644859813084112,
+      "null_centered_two_sided_p": 0.43135137297254056,
+      "unadjusted_95_percent_interval": [-0.7451187401856344, 1.678614106475662]
+    },
+    "persuasion": {
+      "difference_hi_minus_ki": 0.35856060606060614,
+      "familywise_95_percent_bonferroni_interval": [-0.8053289386210898, 1.5798115063079496],
+      "hi_count": 132,
+      "hi_mean": 0.5393939393939394,
+      "holm_adjusted_p": 1.0,
+      "ki_count": 120,
+      "ki_mean": 0.18083333333333332,
+      "null_centered_two_sided_p": 0.4870102597948041,
+      "unadjusted_95_percent_interval": [-0.5983616393442623, 1.3790621015197964]
+    }
+  },
+  "sensitivity_familywise_intervals": {
+    "10": {
+      "bargaining": [-1.506159488770977, 1.1404741208335447],
+      "negotiation": [-0.9724601940003156, 2.000978675711297],
+      "persuasion": [-0.7455808173372367, 1.5323553181386518]
+    },
+    "40": {
+      "bargaining": [-1.2459197969430524, 0.8349145444331012],
+      "negotiation": [-1.2775961055369751, 2.0890793897460567],
+      "persuasion": [-0.9030307912931579, 1.8305225259898537]
+    }
+  },
+  "source": {
+    "eligible_record_count": 752,
+    "eligible_records_sha256": "3981ed2f82ad48de452dd51a704868be5b68cb1b3bbc78b62b0b3b9241ed6252",
+    "events_sha256": "08afbd2212992c3751c9c8a86d6cdf4fa58bc59a1184840f22cb7a2caa818fa1",
+    "family_authenticated_ratings": {
+      "bargaining": 263,
+      "negotiation": 243,
+      "persuasion": 260
+    },
+    "family_terminal_games": {
+      "bargaining": 269,
+      "negotiation": 252,
+      "persuasion": 276
+    },
+    "family_timeout_outcomes": {
+      "bargaining": 9,
+      "negotiation": 8,
+      "persuasion": 24
+    },
+    "frontier_terminal_games": 797
+  }
+}

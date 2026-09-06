@@ -1,0 +1,66 @@
+{
+  "baseline_targets": {
+    "bargaining": 1800,
+    "negotiation": 1800,
+    "persuasion": 1800
+  },
+  "contract": "glee-independent-poisson-activity-scheduler-v1",
+  "distribution": "exponential-interarrival-v1",
+  "families": {
+    "bargaining": {
+      "arrivals": 505,
+      "dispatched": 359,
+      "matched": 357,
+      "next_due_at_unix": 1787889149.8337696,
+      "next_event_index": 505,
+      "next_interval_s": 434.0900529802392,
+      "offline_rebases": 0,
+      "outstanding": null,
+      "outstanding_recoveries": 0,
+      "pending": [],
+      "queue_errors": 1,
+      "suppressed_on_pause": 148,
+      "target_changes": 0
+    },
+    "negotiation": {
+      "arrivals": 541,
+      "dispatched": 328,
+      "matched": 327,
+      "next_due_at_unix": 1787889094.2313352,
+      "next_event_index": 541,
+      "next_interval_s": 36.342475170860226,
+      "offline_rebases": 0,
+      "outstanding": null,
+      "outstanding_recoveries": 0,
+      "pending": [],
+      "queue_errors": 0,
+      "suppressed_on_pause": 214,
+      "target_changes": 0
+    },
+    "persuasion": {
+      "arrivals": 510,
+      "dispatched": 356,
+      "matched": 356,
+      "next_due_at_unix": 1787889366.5062187,
+      "next_event_index": 510,
+      "next_interval_s": 413.35087933223406,
+      "offline_rebases": 0,
+      "outstanding": null,
+      "outstanding_recoveries": 0,
+      "pending": [],
+      "queue_errors": 0,
+      "suppressed_on_pause": 154,
+      "target_changes": 0
+    }
+  },
+  "minimum_target": 100,
+  "paused": true,
+  "schema_version": 1,
+  "seed_hex": "8468648fa47c7c2d40deeab6fa1606c4915aa156bfc0f47ef017242da8d6077b",
+  "targets": {
+    "bargaining": 1800,
+    "negotiation": 1800,
+    "persuasion": 1800
+  },
+  "window_s": 172800.0
+}

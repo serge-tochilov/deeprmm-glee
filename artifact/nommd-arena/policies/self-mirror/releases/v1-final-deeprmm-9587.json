@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "contract": "glee-public-self-mirror-live-activation-v1",
+  "activation_id": "public-self-mirror-v1-final-deeprmm-9587-20260820",
+  "status": "active-controlled-online-evaluation",
+  "authority": "bounded-public-expectedness-selector-evidence-only",
+  "release": {
+    "path": "opponent-sequence-models/self-mirror-releases/public-self-mirror-v1-deeprmm-final-9587-20260820",
+    "release_id": "public-self-mirror-v1-deeprmm-final-9587-20260820",
+    "manifest_sha256": "f6fcd1e715784fd230526629ac9bb237193fe66bcec3b54943264a7ae0f055f8"
+  },
+  "execution_runtime": {
+    "contract": "glee-public-self-mirror-cpu-reference-runtime-v1",
+    "runtime_id": "public-self-mirror-cpu-reference-v1.0-final-deeprmm-20260820",
+    "backend": "pure-pytorch-mamba2-reference",
+    "path": "opponent-sequence-models/self-mirror-runtime-releases/v1.0-final-deeprmm-20260820",
+    "manifest_sha256": "50e33a6ae94ad70b8076ff1383b7c7f3ae9b23840d2d5124b2e17087a6d877fb",
+    "equivalence_sha256": "039da7da0d33d77db460532ab8020a316816a8aa429f2f6b9a21c82ce43ade11",
+    "transport_smoke_sha256": "8235728bd8a33144f719cb2d2c5511a1e6ccf004808ce72e1b08588319631ba1",
+    "threads": {
+      "intraop": 1,
+      "interop": 1
+    }
+  },
+  "recursive_model": {
+    "rmm_depth": "order-2",
+    "tsr_awareness_tier": "population-level self-awareness",
+    "excluded_tier": "opponent-specific peer-awareness",
+    "referent": "how a generic bounded outside observer can model DeepRMM from its public trajectory"
+  },
+  "evidence": {
+    "frozen_logical_game_count": 9587,
+    "test_games": 1181,
+    "test_action_rows": 9412,
+    "seed_1729_action_accuracy": 0.8431789205269868,
+    "seed_2718_action_accuracy": 0.8403102422439439,
+    "cpu_cuda_equivalence": {
+      "complete_frozen_corpus_rows": 74687,
+      "maximum_selector_absolute_error": 0.00000476837158203125,
+      "maximum_diagnostic_absolute_error": 0.000024199485778808594,
+      "component_argmax_mismatches": 0,
+      "ensemble_top_choice_mismatches": 0,
+      "robust_categorical_preference_reversals": 0,
+      "robust_canonical_proposal_choice_reversals": 0
+    }
+  },
+  "authority_boundaries": {
+    "input": "opponent-observable game state, public history, and immutable candidate actions only",
+    "output": "relative public expectedness evidence for the selector",
+    "admissibility": "directional evidence is restricted to candidates already inside a narrow economic-regret set",
+    "excluded": "candidate generation, planner alteration, hidden-identity claims, exact message reconstruction, legality overrides, arithmetic overrides, terminal overrides, dominant-action overrides, and catastrophic-loss overrides"
+  },
+  "online_evaluation": {
+    "epoch_boundary": "first accepted DeepRMM v97 move carrying a forecast and selection receipt from this activation",
+    "registry": "append-only prospective forecast and selection registry",
+    "failure_action": "omit self-mirror evidence and preserve the existing guarded decision path"
+  }
+}

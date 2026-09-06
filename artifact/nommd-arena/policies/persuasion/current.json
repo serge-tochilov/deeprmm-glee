@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "contract": "glee-persuasion-live-policy-pointer-v1",
+  "release": "releases/v2.8-bounded-no-response-routing.json",
+  "release_sha256": "0a0f2a617ee75221f8965b1abcc94f5d4b41629fa7fcbed34a3e49c7788770e3"
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "contract": "glee-offline-repair-bundle-replay-v1",
+  "release": "glee-v100-deeprmm-terra-repair-meta15-balanced-self-mirror-shared-w12-g48-120",
+  "provider_calls": 0,
+  "frontier": "Complete post-retrain v97-v99 turn_observed prefixes with chronological authenticated terminal updates.",
+  "causal_boundary": "Only the first changed action per game is an on-policy-prefix intervention; later changes are censored and receive no historical rating attribution.",
+  "sources": [
+    {
+      "run": "glee-v97-deeprmm-final-9587-meta15-balanced-self-mirror-shared-w12-g48-120-20260821T004138Z",
+      "events_sha256": "1f4a1b9a1f1991a51265e40fc463ac6d537e7ab438dd62e6db58811068b6dda4"
+    },
+    {
+      "run": "glee-v98-deeprmm-opus5-high-dr-meta15-balanced-self-mirror-shared-w12-g48-600-20260821T210513Z",
+      "events_sha256": "6868f2b345c6c7e1adc8886c247d2366cf3f0105904193c96a537c06e04443fe"
+    },
+    {
+      "run": "glee-v99-deeprmm-sol-high-meta15-balanced-self-mirror-shared-w12-g48-600-20260821T213724Z",
+      "events_sha256": "eee03ba30d952438c59c32fa489a6a9f05aae1b21d255653904eccfa018f1e1e"
+    }
+  ],
+  "families": {
+    "bargaining": {
+      "completed_games": 52,
+      "submitted_turns": 223,
+      "unchanged_turns": 203,
+      "changed_turns": 20,
+      "first_changed_games": 3,
+      "downstream_censored_turns": 17,
+      "non_rating_intervention_contexts": 223
+    },
+    "negotiation": {
+      "completed_games": 54,
+      "submitted_turns": 262,
+      "unchanged_turns": 215,
+      "changed_turns": 47,
+      "first_changed_games": 9,
+      "downstream_censored_turns": 38,
+      "categorical_decision_frontiers": 239
+    },
+    "persuasion": {
+      "completed_games": 52,
+      "submitted_turns": 1031,
+      "unchanged_turns": 1026,
+      "changed_turns": 5,
+      "first_changed_games": 5,
+      "downstream_censored_turns": 0,
+      "buyer_locally_resolved": 316,
+      "buyer_selector_eligible_observed_choice_preserved": 22,
+      "buyer_terminal_local": 22,
+      "buyer_continuation_receipt_unavailable": 80
+    }
+  },
+  "changed_actions": {
+    "rows": 72,
+    "sha256": "0471fff2e00f96cee3b97c613fd06eb2ff192a7f8fb6d83f366ad48dd31a3ca5"
+  },
+  "seeds": {
+    "bargaining": {
+      "game_count": 4520,
+      "parent_seed_sha256": "818a08826767443e800c260018f6eb2bcf7e424c67aa78fc3678b545c58d9feb",
+      "seed_sha256": "8852ee854cf7d5b0b126b5b01b4c1d0a8221db8990257170292c221ac3160115"
+    },
+    "negotiation": {
+      "game_count": 2940,
+      "parent_seed_sha256": "2d6c2bd25f677e9d1aa8b7a91c843bc097ea5cc38f6653f9a3b959d0a020876c",
+      "seed_sha256": "a2820591cfb2db67df4e1fd6f7f4095adca089622da7011512791266ac47e676"
+    },
+    "persuasion": {
+      "game_count": 2096,
+      "parent_seed_sha256": "b567e02973f115e9d535d4a9394a9d5df95e4a91a45bcc24ce4319c453785c1f",
+      "seed_sha256": "01bb84195f3cdcec52a9e0419f791095ad15247bada082e619856699a7a6a31d"
+    }
+  },
+  "long_replay_decision": "Skip older all-history and provider replay because all first divergences are narrow and explained, the complete current-mechanics corpus is covered, and post-divergence outcomes are unidentifiable."
+}

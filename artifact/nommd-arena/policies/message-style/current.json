@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "contract": "glee-message-style-policy-pointer-v1",
+  "release": "releases/v2-joint-hi-persona.json",
+  "release_sha256": "54e4547e1f5c287e11a8d3c8799368a5ef75d6de944b47a8981d421e00b343df"
+}

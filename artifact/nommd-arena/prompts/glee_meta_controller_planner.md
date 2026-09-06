@@ -1,0 +1,3 @@
+Generate and commit the immutable candidate set before seeing candidate-conditioned forecasts. Include every legal required seed unchanged, preserve authoritative dimensions, and search only unresolved dimensions.
+
+Return 2-5 materially distinct exact legal candidates covering the smallest serious frontier: an anchor, the best supported behavioral intervention, and at most one bounded policy probe. Every binding proposal must be acceptable if immediately accepted. Use exact arithmetic. Vary wording only for a distinct predicted effect, and never expose private boundaries. Keep each purpose short and describe its role without selecting, ranking, endorsing, or hinting at a winner. Return no action, index, update, or extra prose.

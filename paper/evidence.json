@@ -1,0 +1,97 @@
+{
+  "captured_at": "2026-08-27T19:22:24.610835+00:00",
+  "contract": "glee-competition-paper-evidence-prefix-v1",
+  "interpretation": "The sources were live append-only journals. Every statistic is bound to the complete newline-terminated prefix and SHA-256 recorded above; later appends are outside this snapshot.",
+  "private_source_receipt_sha256": "b0d6a401f12365a6825aace0019cfc79ec8560f8adc28872875a38c52ec83f45",
+  "live_endpoint": {
+    "active_games": 17,
+    "arithmetic_mean_family_rating": 1934.503333,
+    "families": {
+      "bargaining": {
+        "games_played": 5528,
+        "rating": 2007.71
+      },
+      "negotiation": {
+        "games_played": 3885,
+        "rating": 1970.71
+      },
+      "persuasion": {
+        "games_played": 3051,
+        "rating": 1825.09
+      }
+    },
+    "timestamp": "2026-08-27T19:22:18.562024+00:00",
+    "total_games_played": 12464
+  },
+  "run_source": {
+    "complete_prefix_sha256": "934d591220fc5ef48f6bfe4d8b3d6f024ea6d0007d0d5204535f02aae5fe754c",
+    "complete_prefix_size_bytes": 166812875,
+    "first_timestamp": "2026-08-27T14:02:15.919327+00:00",
+    "initial_file_size_bytes": 166812875,
+    "last_event_sequence": 72665,
+    "last_timestamp": "2026-08-27T19:22:16.203853+00:00",
+    "line_count": 72665,
+    "private_archive_reference": "glee-v108/frozen-events-prefix"
+  },
+  "run_summary": {
+    "decision_latency_seconds": {
+      "maximum": 60.055639,
+      "mean": 7.690355,
+      "median": 0.042729,
+      "p95": 26.04692
+    },
+    "decision_route_fractions": {
+      "cloud-assisted": 0.443567,
+      "local": 0.556433
+    },
+    "decision_routes": {
+      "cloud-assisted": 1686,
+      "local": 2115
+    },
+    "distinct_terminal_games": 447,
+    "events_by_kind_selected": {
+      "game_completed": 238,
+      "game_completed_during_opponent_turn": 209,
+      "move_submission_terminal_race": 1,
+      "move_submission_transport_ambiguous": 7,
+      "move_submitted": 3781,
+      "worker_finished": 3801
+    },
+    "fallback_count": 15,
+    "fallback_fraction": 0.003946,
+    "invalid_move_submissions": 0,
+    "move_submissions": 3781,
+    "nonnull_tetrad_updates": 0,
+    "top_selection_branches": {
+      "bargaining-authority": 60,
+      "bargaining-plateau": 23,
+      "bargaining-v2.17-policy": 172,
+      "deterministic": 15,
+      "deterministic-single-action": 112,
+      "meta15-selector": 1482,
+      "persuasion-buyer-economic-local": 1216,
+      "persuasion-buyer-terminal-expected-value": 70,
+      "persuasion-v2.7-authority": 222,
+      "persuasion-v2.7-terminal-binary-anchor": 15,
+      "persuasion-v2.8-no-response-authority": 334,
+      "terra-high": 78
+    },
+    "worker_decisions": 3801,
+    "worker_decisions_by_family": {
+      "bargaining": 549,
+      "negotiation": 613,
+      "persuasion": 2639
+    }
+  },
+  "schema_version": 1,
+  "sensor_source": {
+    "complete_prefix_sha256": "aab6728816a309ca1e633fff08b578226bf90d0d29682aed3418f2c750079c9e",
+    "complete_prefix_size_bytes": 41487355,
+    "first_timestamp": "2026-08-20T07:15:44.552965+00:00",
+    "initial_file_size_bytes": 41487355,
+    "last_event_sequence": 172549,
+    "last_timestamp": "2026-08-27T19:22:18.574353+00:00",
+    "line_count": 172549,
+    "private_archive_reference": "glee-v108/frozen-sensor-prefix"
+  }
+}

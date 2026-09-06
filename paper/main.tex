@@ -1,0 +1,188 @@
+\documentclass{article}
+
+\usepackage[sglblindworkshop,nonatbib]{neurips_2026}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{microtype}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage[backend=biber,style=apa,natbib=true]{biblatex}
+
+\DeclareLanguageMapping{english}{english-apa}
+\addbibresource{references.bib}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\DeepRMM}{DeepRMM-01}
+\newcommand{\RMM}{recursive mental modeling}
+\setlength{\emergencystretch}{2em}
+\workshoptitle{Interpreting Agent Behavior}
+
+\title{\DeepRMM{} at GLEE: From Recursive Opponent Modeling to Specialized Control}
+
+\author{Serge Tochilov\\Independent Researcher; NCIS Associate Member\\Ottawa, Canada\\\texttt{serge.tochilov@ncis.org}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+GLEE is a live competition in which agents repeatedly play 3 language-based economic games under varied configurations and partial identity disclosure. \DeepRMM{} tested whether persistent recursive mental modeling (RMM) could move ahead of adapting opponents through predictions of their responses and of the agent's public predictability. The implementation evolved from an action--belief--desire--emotion ledger, prose dossiers, and per-move deliberation into a hybrid controller combining deterministic family policies, statistical opponent packages, action-conditioned response prediction, a public self-mirror, and bounded language-model reasoning. At a frozen 9,587-game training frontier, a validation-selected response stack attained equal-family negative log likelihood (NLL) 0.326, compared with 0.329 for its sequence-only component and 0.452 for its engineered-only component; a Persuasion continuation head reduced game-macro NLL from 0.702 to 0.614 (paired 95\% interval for the difference [-0.141, -0.034]). Two public self-mirror seeds yielded descriptive action accuracy of 84.0--84.3\%. Across the complete journal frontier, all 97,473 submitted moves were valid; \DeepRMM{} finished 59th with final dashboard Bargaining/Negotiation/Persuasion ratings of 1899.7/1794.1/1900.9. Within this development path, explicit mental-state prose showed no measurable incremental value, while compact statistical and action-conditioned models became operationally usable under bounded authority.
+\end{abstract}
+
+\noindent\textbf{Keywords:} recursive mental modeling; opponent modeling; multi-agent systems; language agents; strategic interaction; social reasoning; agent evaluation; economic games
+
+\section{Agent overview and motivation}
+
+GLEE standardizes 3 families of sequential language-based economic games across a large parameter grid: discounted-surplus division, bilateral price negotiation, and repeated persuasion under hidden product quality \citep{shapira2026glee}. The 2026 competition added live matchmaking, 120-second moves, identity disclosure in a random half of games, and a configuration- and role-conditioned rating based on own payoff \citep{glee2026docs}. It therefore offered repeated encounters for testing persistent opponent models and nested self--other reasoning.
+
+Strategic language agents must infer how another agent will react and how their own policy appears to it. Opponent modeling predicts another agent's actions \citep{albrecht2018}; machine theory-of-mind work also considers latent states and nested models \citep{rabinowitz2018}.\footnote{We adopt \emph{recursive mental modeling} (RMM) for a process-level theory-of-mind implementation \citep{tochilov2026nommd}.} The objective was to develop an agent that employs RMM to model the opponent, estimate how a generic observer could predict \DeepRMM{}, and act favorably under those forecasts.
+
+\section{Technical approach}
+
+Every turn entered one credential-owning \emph{supervisor} that maintained a shared pool of up to 20 workers, enforced GLEE's 60-request-per-minute API limit, recorded authenticated state, policy versions, opponent-information regime, and timing evidence, and allocated the reply timing budget under a hard deadline. Deterministic \emph{family policies} computed legal fallbacks and controlled exact arithmetic, terminal states, dominated purchases, reservation values, and diagnosed deadlocks. Collision-safe \emph{statistical opponent packages} supplied population evidence for hidden opponents and direct evidence for unambiguous disclosed identities.
+
+Read-only \emph{history sidecar and synchronizer} services joined dashboard records to game IDs for exact rating deltas; a \emph{public-board reporter} polled family boards for opponent game-count and rating activity. Workers archived terminal JSON and append-only events beside canonical SQLite-WAL stores; an atomic, hash-verified Parquet frontier fed Polars analysis.
+
+OpenAI's GPT-5.6 Terra High (thereafter Terra) generated and selected online candidates but never controlled transport, legality, arithmetic, or terminal behavior. Deterministically unresolved turns ran a \emph{1.5-round controller}: a \emph{Terra planner} received visible state, structured history, statistical evidence, and deterministic seeds, returning 2--5 legal candidates without selecting one. The local \emph{conditioned twin} predicted the opponent's response to each candidate, while the \emph{public self-mirror} estimated each candidate's expectedness under a generic external model of \DeepRMM{}. Finally, the \emph{Terra selector} received seed-stably permuted candidates and aligned forecasts, returning one index. The \emph{supervisor} restored canonical identity, applied guards, and submitted; failure preserved deterministic fallback. Figure~\ref{fig:architecture} shows this path, and Appendix Table~\ref{tab:authority} records each module's authority.
+
+Candidate-set hashes and receipts linked planner output, local forecasts, selector choice, guard result, and API submission. Forecasts were sealed before outcomes, and candidate provenance conferred no selector preference after guards.
+
+\begin{figure}[t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}c c c >{\centering\arraybackslash}p{0.29\linewidth}@{}}
+Visible state, packages, and deterministic seeds & $\longrightarrow$ & Terra planner & $\longrightarrow$ & Frozen legal candidates \\
+&&&& $\downarrow$ \\
+\end{tabular*}\par\vspace{-\parskip}
+\begin{tabular*}{\linewidth}{@{}>{\centering\arraybackslash}p{0.24\linewidth}@{\extracolsep{\fill}}c c c >{\centering\arraybackslash}p{0.29\linewidth}@{}}
+Selected candidate & $\longleftarrow$ & Terra selector & $\longleftarrow$ & Twin and self-mirror forecasts \\
+$\downarrow$ &&&& \\
+\end{tabular*}\par\vspace{-\parskip}
+\makebox[\linewidth][l]{\begin{tabular}{@{}>{\centering\arraybackslash}p{0.24\linewidth} c l@{}}
+Supervisor guards & $\longrightarrow$ & GLEE API \\
+\end{tabular}}
+\caption{Bounded 1.5-round decision path. Local forecasts could not alter candidates, and only the supervisor could submit an action.}
+\label{fig:architecture}
+\end{figure}
+
+\section{Strategic design choices}
+
+The first production design maintained an activation-ranked \emph{action--belief--desire--emotion tetrad} ledger and model-written dossiers. RMM prose Terra calls generated useful hypotheses but were slow, hard to calibrate, and vulnerable to semantic drift. A frozen 292-call Bargaining comparison found no reliable gain from adding dossier prose to exact history: all 5 opponent-cluster bootstrap intervals crossed zero, while dossiers added about 27 seconds and 1,449 reasoning tokens per successful call. Production therefore adopted deterministic statistical packages. A later audit found no non-null cognitive update across 1,502 successful selectors, so the inert tetrad carrier was removed.
+
+The public self-mirror asked a second-order question: how well could a generic bounded observer predict \DeepRMM{} from its public trajectory? It modeled no particular opponent and supplied no evidence of an opponent's beliefs; its accuracy measured the agent's public predictability. \emph{Strategic reconnaissance} combined public leaderboard changes, disclosed identities, direct encounters, timing, messages, and actions into opponent packages and activity priors; hidden or undecided identities retained an unknown route without opponent-specific authority. \emph{Strategic Identity Concealment} (SIC) separated identity modes: \emph{known-identity} (KI) games retained a stable style, while each \emph{hidden-identity} (HI) game pinned one lexical and timing persona. SIC also randomized activity through independent family-level \emph{Poisson admission streams} feeding a shared worker pool, addressing cross-game and cross-family identity leakage.
+
+\section{Development process}
+
+OpenAI's GPT-5.6 Sol Max via Codex (thereafter Codex) drove the manual offline loop of receipt inspection, bounded repair, regression testing, and release sealing. Policy changes underwent \emph{chronological first-divergence replay}, e.g., one frozen pass covered 158 games and 1,516 turns; it changed the first action in 17 games, all within predeclared repair classes, without invalid actions or unrelated drift. Later outcomes were censored because observed continuations belonged to historical actions.
+
+Offline PyTorch/CUDA training read immutable Parquet corpus frontiers with whole-game chronological splits. The action-conditioned twin combined 2-seed compact Mamba-2 sequence experts \citep{dao2024mamba2} with 2 engineered-feature experts through validation-fitted per-family convex weights; the self-mirror used a 2-seed hierarchical Mamba-2 ensemble. Byte-identical weights ran in one-thread pure-PyTorch CPU services over owner-only Unix sockets; candidate batches were scored between Terra's planner and selector, and service or transport failure closed to deterministic control.
+
+The \emph{rating delta model} retained GLEE's published update and display shrinkage. Per-family structural ridge percentile estimates blended strictly earlier all-history, 24-hour, and 6-hour exact-configuration payoff ranks, then added a sign-preserving ridge residual from causal pregame context. After 40\% warm-up, two 15\% blocks selected rank structure, a third selected residual and magnitude calibration, and the final block supplied retrospective metrics (MAE 1.87/2.14/2.09 versus 3.57/3.18/3.03 for zero change). Live forecasts were sealed before authenticated deltas arrived. Consistent with GLEE's rating definition, the controller optimized its own payoff. Exact arithmetic and reservation values controlled clear cases; rating estimates were advisory, and the planner acted only when several economically admissible actions remained.
+
+The final 9,587-game training frontier excluded later outcomes. On 2,928 held-out responses from 628 games, the validation-selected convex twin stack attained equal-family NLL 0.326, compared with 0.329 for the sequence-only ensemble and 0.452 for the engineered-only ensemble. Its 88.7\% accuracy was lower than the sequence-only ensemble's 89.9\%; selection followed the declared validation NLL objective. The \emph{reversed Persuasion head} reduced game-macro NLL from 0.702 for a preceding-signal-and-action Markov baseline to 0.614 on 3,021 test transitions from 159 games (paired difference -0.088; 95\% interval [-0.141, -0.034]). Its raw accuracy was 69.5\% versus 70.1\% for the baseline, and balanced accuracy was 50.3\% versus 63.1\%; the head improved probability assignment despite lower argmax metrics. Two self-mirror seeds reached 84.0--84.3\% action accuracy and 0.052--0.054 normalized proposal-coordinate mean absolute error on 12,414 targets. No simple self-mirror baseline was frozen, so these figures are descriptive. All metrics predict behavior under historical policies and do not establish counterfactual payoff.
+
+\section{Evaluation and Agent Behavior Analysis}
+
+The behavioral contract maximized own payoff under visible mechanics, preserved optionality only when continuation value covered immediate cost, and treated language as evidence and influence; language had no decision authority. Immutable candidate hashes, role-explicit arithmetic, legality and terminal guards, bounded model roles, pre-outcome forecasts, submission receipts, and deterministic fallback enforced that contract. Candidate provenance conferred no selector preference after guards, preventing the model from merely restating a deterministic anchor.
+
+Table~\ref{tab:deployment} describes the complete 110-release journal frontier and the nested final-v108 observation window. The mature window used local control for 55.6\% of decisions, compared with 24.7\% across development, while fallback fell from 1.10\% to 0.39\%. These changes are descriptive because family and policy composition also changed.
+
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{All-history execution evidence and the nested final-v108 observation window.}
+\label{tab:deployment}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabularx}{\linewidth}{@{}L P{0.31\linewidth} P{0.27\linewidth}@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Measurement}} & \multicolumn{1}{c}{\textbf{All history}} & \multicolumn{1}{c}{\textbf{Final v108 prefix}} \\
+\midrule
+Journal-terminal games & 13,125 & 447 \\
+\addlinespace[3pt]
+Clean-cutoff Bargaining / Negotiation / Persuasion games\textsuperscript{*} & 5,724 / 4,052 / 3,255 & -- \\
+\addlinespace[3pt]
+Worker decisions; submitted moves & 97,581; 97,473 & 3,801; 3,781 \\
+\addlinespace[3pt]
+Local; cloud-assisted decisions & 24,115 (24.7\%); 73,466 (75.3\%) & 2,115 (55.6\%); 1,686 (44.4\%) \\
+\addlinespace[3pt]
+Invalid submissions; fallbacks & 0; 1,074 (1.10\%) & 0; 15 (0.39\%) \\
+\addlinespace[3pt]
+Latency: median / mean / p95 / max (s) & 11.01 / 17.70 / 77.97 / 108.52 & 0.043 / 7.69 / 26.05 / 60.06 \\
+\addlinespace[3pt]
+Bargaining / Negotiation / Persuasion clean-cutoff rating\textsuperscript{*} & 1964.8 / 1831.0 / 1939.1 & -- \\
+\bottomrule
+\end{tabularx}
+\vspace{2pt}
+\parbox[t]{\linewidth}{\scriptsize \textsuperscript{*}The clean sensor cutoff recorded 13,031 total games. After the shutdown tail, the GLEE dashboard displayed 5,727, 4,052, and 3,269 games (13,048 total) and ratings of 1899.7, 1794.1, and 1900.9, respectively.}
+\end{table}
+
+Early campaign play exposed recurrent failures in semantic verification, anchor revision, and horizon handling: model policies accepted labels such as ``equilibrium split'' without checking who received the share, overpreserved anchors, and prolonged deadlocks to an undocumented 99-round boundary. Development was reactive: guards followed observed failures, and no blueprint was preregistered. More consequentially, a late high-rate deployment encountered a terminal race that restarted the supervisor and repeatedly rebuilt Bargaining state, synchronizing 78 timeouts and about 403 displayed-rating points of loss. The v108 release confined terminal and release faults to individual turns and restored the supervisor from verified compiled state; a cold build took 508.6 seconds and a warm restore 2.58 seconds. Action quality alone did not define effective autonomy when recovery could erase many games.
+
+The operational post-SIC cut froze the first 797 terminal games. Of 766 authenticated game ratings, 752 non-timeout records gave HI-minus-KI mean rating-delta contrasts of -0.190, +0.491, and +0.359 for Bargaining, Negotiation, and Persuasion. Circular 20-game-block bootstraps (50,000 resamples) gave corresponding family-wise 95\% intervals of [-1.412, 1.061], [-1.031, 1.916], and [-0.805, 1.580]. All crossed zero (raw 2-sided p=0.715, 0.431, and 0.487; Holm-adjusted p=1.00), as did 10- and 40-game sensitivity intervals, leaving results compatible with the null hypothesis of no mean KI/HI contrast. Because opponent, role, configuration, and policy composition varied, this descriptive analysis could not identify a causal SIC effect.
+
+\section{Limitations and reproducibility}
+
+All 3 final dashboard ratings were near the scale's 2,000 center but established neither equilibrium nor a fixed-population comparison. GLEE conditioned own-payoff ratings on configuration, role, and opponent strength and updated its comparison set \citep{glee2026docs}; ratings could move without policy change. No fixed-opponent ablation isolated components.
+
+GLEE's three families jointly defined a grid of 960 possible configurations. Within this structured grid, moves exposed small action sets and repeated numeric structure, so observations supported acceptance curves, concession regimes, signal-response frequencies, and boundary rules more effectively than unrestricted belief--desire prose. Organizers reported 40 agents above 100,000 games and 14 operators above 250,000 aggregate games \citep{gleediscord2026}. The campaign used a 6-core CPU, 32 GB RAM, a 6-GB RTX 2060, and quota-limited Terra; the frozen training frontier held 9,587 games. This result does not establish superiority over unrestricted belief--desire prose at matched sample size, against fixed opponents, or in richer interactions.
+
+Recursive structure remained in action-conditioned response prediction, public self-modeling, and identity analysis of adapting operators. The self-mirror's second-order referent was a generic observer, not a demonstrated opponent belief. The evidence therefore establishes neither internal recursion depth, opponent-specific order-2 beliefs, human-like cognition, nor concealment's causal benefit. A richer test would require longer-lived agents, consequential commitments, sparse histories, and mental-state accounts that remain distinct after statistical fitting.
+
+Reproducibility rests on immutable releases, chronological split manifests, action provenance, prospective forecast registries, and frozen journal prefixes. The public repository preserves final runtime and model-code closures, policies, prompts, model architectures, exact \texttt{uv} locks, tests, public-safe receipts, and deidentified sufficient inputs that reproduce the KI/HI inference, learned-model comparisons, dossier ablation, rating estimates, and execution telemetry at reported precision \citep{tochilov2026deeprmmglee}. Credentials, private journals, raw corpora, and trained weights remain withheld. Closed-source Terra prevents exact regeneration of model-mediated decisions. GLEE's closed competition environment prevents online replay; its nonstationary opponent population would preclude exact replay anyway. Reproducible claims concern frozen analysis, architecture, validity, latency, and routing, not counterfactual rank. $\blacklozenge$
+
+\section*{Acknowledgments}
+
+Serge Tochilov retains full authorship of all paper content. Codex assisted in implementation, analysis, evidence tracing, literature search, reference verification, and TeX source editing. All claims were checked against receipts or official documentation. The author declares no competing interests; the work received no external funding. The views expressed do not represent the position of any organization. Typeset with \LaTeX{}.
+
+\appendix
+\renewcommand{\thetable}{A\arabic{table}}
+\renewcommand{\theHtable}{A\arabic{table}}
+\setcounter{table}{0}
+\section{Module authority}
+\label{app:authority}
+
+\begin{table}[h]
+\centering
+\small
+\caption{Online modules and their decision authority.}
+\label{tab:authority}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabularx}{\linewidth}{@{}P{0.20\linewidth} L P{0.25\linewidth}@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Module}} & \multicolumn{1}{c}{\textbf{Function}} & \multicolumn{1}{c}{\textbf{Authority}} \\
+\midrule
+Family policy and guards & Exact mechanics, bounded heuristics, candidate normalization, and fallback & Hard within named conditions \\
+\addlinespace[3pt]
+Statistical package & Population and collision-safe opponent action frequencies & Advisory prompt evidence \\
+\addlinespace[3pt]
+Terra planner & Generate an independent strategic candidate frontier & Candidate generation only \\
+\addlinespace[3pt]
+Action-conditioned twin & Predict the direct response to each frozen candidate & Advisory response distribution \\
+\addlinespace[3pt]
+Public self-mirror & Estimate each candidate's public expectedness & Bounded advisory \\
+\addlinespace[3pt]
+Terra selector & Compare guarded candidates and aligned forecasts & Select one supplied index \\
+\addlinespace[3pt]
+Supervisor & Maintain the shared worker pool, enforce the API rate limit, allocate reply timing, and validate schema, legality, deadline, and transport state & Final submission boundary \\
+\addlinespace[3pt]
+History sidecar and synchronizer & Join authenticated dashboard records to game IDs and exact rating deltas & Read-only; no submission \\
+\addlinespace[3pt]
+Public-board reporter & Poll family ratings and game counts for opponent activity & Public read-only; no submission \\
+\addlinespace[3pt]
+Event stores & Archive terminal JSON and append-only events in SQLite-WAL and verified Parquet frontiers & Evidence writes only; no submission \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\printbibliography
+
+\input{checklist}
+
+\end{document}

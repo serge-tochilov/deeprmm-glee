@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite the accompanying GLEE Competition paper."
+title: "DeepRMM-01 at GLEE: Supporting Artifact"
+type: software
+authors:
+  - family-names: Tochilov
+    given-names: Serge
+repository-code: "https://github.com/serge-tochilov/deeprmm-glee"
+date-released: 2026-08-30
+version: 1.0.0
+license: Apache-2.0

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "contract": "glee-terra-meta-controller-live-activation-v1",
+  "activation_id": "terra-1.5-round-v1.4-final-deeprmm-rebuild-20260820",
+  "status": "active-controlled-online-evaluation",
+  "controller": "glee-pre-terra-one-and-half-round-controller-v2.2",
+  "decision_authority": "advisory-candidate-response-evidence-only",
+  "selector_authority": "glee-symmetric-candidate-selector-authority-v1",
+  "activated_families": [
+    "bargaining",
+    "negotiation",
+    "persuasion"
+  ],
+  "conditional_twin": {
+    "candidate_id": "post-planner-conditional-twin-v3.0-deeprmm-final-9587-20260820-r1",
+    "manifest_sha256": "a0367b65eceff670d8d0b5fb851298c18b68bddb5b9f00ea30158e7430700674",
+    "path": "opponent-sequence-models/releases/v3.0-deeprmm-final-9587-20260820-r1"
+  },
+  "persuasion_buyer_continuation": {
+    "release_id": "persuasion-buyer-continuation-deeprmm-final-9587-20260820",
+    "manifest_sha256": "46345845cfd13c19cbca8f1590d02d508f8fc592dbe33f3376edf6afa71af125",
+    "path": "opponent-sequence-models/releases/persuasion-buyer-continuation-v1-deeprmm-final-9587-20260820",
+    "authority": "advisory-next-seller-signal-evidence-only",
+    "eligible_frontier": "nonterminal unresolved Persuasion buyer decisions only",
+    "selector_contract": "glee-persuasion-buyer-continuation-selector-authority-v1"
+  },
+  "negotiation_reject_counteroffer_bridge": {
+    "contract": "glee-negotiation-reject-counteroffer-bridge-v1",
+    "authority": "projection-and-identity-remapping-only",
+    "eligible_frontier": "counteroffer-capable Negotiation decision whose guarded baseline is RejectOffer with a finite product_price",
+    "fixed_event": "self rejection of the current opponent offer",
+    "variable_event": "attached self counteroffer projected as the next proposal",
+    "prediction_target": "opponent direct response to the projected counteroffer",
+    "frozen_model_change": false,
+    "runtime_change": false
+  },
+  "evidence": {
+    "frozen_logical_game_count": 9587,
+    "conditional_direct_response_game_count": 4175,
+    "conditional_direct_response_target_count": 17157,
+    "conditional_twin_held_out_accuracy": 0.88695,
+    "persuasion_buyer_continuation": {
+      "deep_rmm_transitions": 20337,
+      "deep_rmm_buyer_games": 1083,
+      "test_transitions": 3021,
+      "test_games": 159,
+      "test_accuracy": 0.695465,
+      "test_game_macro_nll": 0.614317
+    },
+    "cpu_cuda_equivalence": {
+      "conditional_receipt_sha256": "c729ab70a5681249dede2b4788a5381ee9d4ccdfaebc500ec07b6e9357b7628c",
+      "conditional_maximum_probability_error": 0.0000013113021850585938,
+      "buyer_continuation_receipt_sha256": "46b0705cbab780af3ffcb4423004f5eb62dca8707ea73a8ddd4b961fe97437e4",
+      "buyer_continuation_maximum_probability_error": 0.0000010728836059570312,
+      "allowed_maximum_probability_error": 0.000002
+    }
+  },
+  "authority_boundaries": {
+    "planner": "Terra commits candidate actions before receiving candidate-conditioned local forecasts or public self-mirror evidence.",
+    "conditional_twin": "The local model predicts only the opponent's direct response to each immutable projected candidate and emits no final action.",
+    "candidate_set": "Candidate actions are normalized, guarded, frozen, and hash-bound before local inference.",
+    "persuasion_buyer_continuation": "The reversed head predicts only the opponent seller's next signal after each immutable buyer action; it does not predict hidden quality or choose the final action.",
+    "negotiation_bridge": "Reject-plus-counteroffer projection fixes rejection, varies only the attached legal counteroffer, and remaps projected identities to the original immutable compound actions.",
+    "current_payoff": "Immediate expected payoff remains primary; forecast evidence can distinguish only economically admissible candidates.",
+    "deterministic_controls": "Legality, exact arithmetic, terminal actions, bounded hard safeguards, catastrophic-loss controls, and the final deadline remain authoritative.",
+    "causality": "Forecast differences are observed-policy predictive evidence, not proof of a counterfactual causal effect."
+  },
+  "deadline_policy": {
+    "planner_timeout_s": 48,
+    "conditional_timeout_s": 3,
+    "self_mirror_timeout_s": 3,
+    "minimum_selector_budget_s": 12,
+    "finalization_margin_s": 12,
+    "failure_action": "existing guarded deterministic action"
+  },
+  "online_evaluation": {
+    "epoch_boundary": "first accepted DeepRMM v97 move whose receipt identifies this activation and the final 9587-game rebuild",
+    "prospective_registry": "local services append each forecast before the corresponding opponent response exists",
+    "interpretation": "Frozen-corpus validation establishes transport and predictive readiness; prospective outcomes estimate online decision value."
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "contract": "glee-negotiation-live-policy-pointer-v1",
+  "release": "releases/v2.14-buyer-surplus-and-single-counter.json",
+  "release_sha256": "e3146d7bf299849396711d606293cc46052a3b9552b6e491f79841815f39b3ef"
+}

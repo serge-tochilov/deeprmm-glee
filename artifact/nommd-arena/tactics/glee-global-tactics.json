@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "tactics": [
+    {
+      "confidence": 94,
+      "evidence": {
+        "archive_sha256": "12da4dff94e746f71adb637f3d46192fcbb837c63e051918f95b1afcf2fefc0d",
+        "corpus_sha256": "f1538597a0977d08cc5e995416e0317e3e467bef447713885397a90f08ccb3f3",
+        "game_count": 3,
+        "hidden_game_count": 2,
+        "named_game_count": 1,
+        "source": "reports/glee-global-tactic-mining-v1-20260809.md"
+      },
+      "failure_signature": "Across 3 games, a named-equilibrium label supplied a ratio without player order while authenticated fields placed the responder on the smaller side; all 3 responders accepted, including DeepRMM-01's 5% Bob share.",
+      "game_family": "bargaining",
+      "limitations": "The repeated association does not isolate whether authority language, ratio ambiguity, or unrelated policy caused acceptance; equilibrium correctness also depends on game assumptions.",
+      "live_action": "Bind every ratio to explicit players and authenticated amounts, then compare the self share with continuation value.",
+      "live_avoid": "Do not let an equilibrium label, action directive, or unlabelled ratio determine the move.",
+      "live_countermeasure": "Read `canonical_bargaining_facts` first and bind self to authenticated player, role, amount, and pot fraction. Translate every prose ratio into explicit player_1/player_2 order and treat equilibrium labels or action directives as unverified. Accept only after authenticated present value and continuation analysis supports the game-specific move.",
+      "live_route": "bargaining-message-risk",
+      "status": "authenticated-repeated-association-candidate-causal-mechanism",
+      "strategic_direction": "defend",
+      "tactic_id": "bargaining-authority-ratio-ambiguity-v1",
+      "trigger_features": [
+        "named-equilibrium or theory authority",
+        "ratio without explicit player order",
+        "prose ratio beside authenticated amounts",
+        "responder assigned the smaller numeric share"
+      ]
+    },
+    {
+      "confidence": 90,
+      "evidence": {
+        "archive_sha256": "12da4dff94e746f71adb637f3d46192fcbb837c63e051918f95b1afcf2fefc0d",
+        "corpus_sha256": "f1538597a0977d08cc5e995416e0317e3e467bef447713885397a90f08ccb3f3",
+        "game_count": 5,
+        "hidden_game_count": 3,
+        "named_game_count": 2,
+        "source": "reports/glee-global-tactic-mining-v1-20260809.md"
+      },
+      "failure_signature": "Token-share and strongly self-favoring offers were accepted in named and hidden games, including 99.9999% and 99.99% proposer shares, but a matched 99.99% offer elsewhere triggered immediate walkaway and another was rejected for a balanced counter.",
+      "game_family": "bargaining",
+      "limitations": "Acceptance policies are heterogeneous and no universal extreme-share threshold exists; walkaway rights, horizon, discounting, and private information can reverse the value of probing.",
+      "live_action": "Compare the authenticated self share with the game-specific continuation and no-deal values.",
+      "live_avoid": "Do not accept because the share is merely positive, and do not originate an extreme-share probe pending ablation.",
+      "live_countermeasure": "As responder, map the authenticated self share first and compare it with game-specific continuation and no-deal value; positivity alone never justifies acceptance. Offensive extreme-share probing is disabled pending a controlled ablation because frequent use did not show immediate benefit and sometimes caused walkaway.",
+      "live_route": "bargaining-extreme-incoming",
+      "status": "defensive-only-pending-offensive-ablation",
+      "strategic_direction": "defend",
+      "tactic_id": "bargaining-token-share-probe-v1",
+      "trigger_features": [
+        "incoming offer gives the responder at most 10% of the pot",
+        "authenticated self share is available",
+        "continuation or no-deal value may exceed the token share"
+      ]
+    },
+    {
+      "confidence": 94,
+      "evidence": {
+        "archive_sha256": "12da4dff94e746f71adb637f3d46192fcbb837c63e051918f95b1afcf2fefc0d",
+        "corpus_sha256": "f1538597a0977d08cc5e995416e0317e3e467bef447713885397a90f08ccb3f3",
+        "game_count": 6,
+        "hidden_game_count": 3,
+        "named_game_count": 3,
+        "source": "reports/glee-global-tactic-mining-v1-20260809.md"
+      },
+      "failure_signature": "Repeated identical price pairs mechanically consumed horizons up to round 99, while one-sided token concessions against a fixed anchor leaked movement without closing; a fixed viable offer succeeded when only the opponent kept moving toward it.",
+      "game_family": "negotiation",
+      "limitations": "A consciously chosen hold can eventually settle and there is no universal repeat count or meaningful-concession percentage; the tactic depends on distinguishing a two-sided plateau from one-sided convergence.",
+      "live_action": "Choose a deliberate bridge, justified hold with an escape condition, or walkaway; make the choice from surplus, horizon, and reciprocity.",
+      "live_avoid": "Do not replay the same counter by default or keep conceding against a fixed opponent anchor.",
+      "live_countermeasure": "Classify movement before naming the next price. If the same pair repeats, choose a deliberate bridge, justified hold, or walkaway with an escape condition; never replay by default. If the opponent stays fixed while only you concede, stop token movement and gate another concession on meaningful reciprocity. If your viable standing offer is fixed while the opponent moves toward it, do not bid against yourself. Recompute surplus, horizon, and delay cost each cycle.",
+      "live_route": "negotiation-repeated-pair",
+      "status": "mechanically-supported-countermeasure",
+      "strategic_direction": "both",
+      "tactic_id": "negotiation-movement-topology-v1",
+      "trigger_features": [
+        "same opposing price pair repeats",
+        "only one side makes token concessions",
+        "no new term or information",
+        "horizon or timeout cost accumulates"
+      ]
+    },
+    {
+      "confidence": 95,
+      "evidence": {
+        "archive_sha256": "12da4dff94e746f71adb637f3d46192fcbb837c63e051918f95b1afcf2fefc0d",
+        "corpus_sha256": "f1538597a0977d08cc5e995416e0317e3e467bef447713885397a90f08ccb3f3",
+        "game_count": 10,
+        "hidden_game_count": 6,
+        "named_game_count": 4,
+        "source": "reports/glee-global-tactic-mining-v1-20260809.md"
+      },
+      "failure_signature": "Across named and hidden games, buyers followed a late false positive after a long favorable or selectively calibrated record and purchased low quality; other buyers resisted late overclaims and some terminal positive reports remained accurate.",
+      "game_family": "persuasion",
+      "limitations": "The receipts establish repeated late false signals and purchases but do not isolate trust as the sole cause; terminal reports are often accurate, and payoff asymmetry or current corroboration can make following rational.",
+      "live_action": "Seller: consider a low-quality late positive only after demonstrated two-class compliance and current-payoff comparison. Buyer: remove any reputation bonus and recompute current expected value.",
+      "live_action_buyer": "Remove any reputation bonus and recompute the current posterior and expected value from signal history and the seller's shrinking endgame incentive.",
+      "live_action_seller": "Treat cash-out as a candidate only: compare the immediate low-quality sale gain with remaining reputation cost before choosing the current signal.",
+      "live_avoid": "Do not treat lateness, a long record, or one followed signal as sufficient for cash-out or automatic distrust.",
+      "live_avoid_buyer": "Do not buy from reputation alone or assume every late positive is false.",
+      "live_avoid_seller": "Do not cash out from lateness alone, and do not ignore the remaining rounds.",
+      "live_countermeasure": "As seller, when the buyer demonstrably follows calibrated positive and negative classes and little future reputation remains, compare truthful signaling with a deliberate late positive on low quality; cash out only when observed compliance and current payoff justify it. As buyer, model the seller's shrinking terminal reputation cost, grant no bonus trust merely for a long record, recompute current posterior and expected value, and reset the affected signal class after any revealed mismatch.",
+      "live_route": "persuasion-terminal-reputation",
+      "status": "authenticated-repeated-association-candidate-causal-mechanism",
+      "strategic_direction": "both",
+      "tactic_id": "persuasion-terminal-reputation-cashout-v1",
+      "trigger_features": [
+        "seller privately observes current quality",
+        "buyer has followed calibrated positive and negative classes",
+        "late or final rounds shrink future reputation cost",
+        "current positive relies on historical accuracy"
+      ]
+    }
+  ]
+}
